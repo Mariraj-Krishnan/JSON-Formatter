@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON formatter</title>
+    <script src="script.js" defer></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'roboto';
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        button{
+            display: none;
+            padding: 5px;
+        }
+        button.active{
+            display: initial;
+        }
+        form{
+            width: 170px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <input type="file" id="json-input" accept=".json">
+    </form>
+    <button>Download</button>
+</body>
+</html>
