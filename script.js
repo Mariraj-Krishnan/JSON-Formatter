@@ -52,7 +52,10 @@ textAreas[0].oninput = function() {
     copyButton.style.display='initial';
 }
     catch(err){
-        if(this.value === '') textAreas[1].value=''
+        if(this.value === ''){
+            textAreas[1].value='';
+            downloadBtn.classList.remove('active')
+        }
         else textAreas[1].value=err;
     }
 }
