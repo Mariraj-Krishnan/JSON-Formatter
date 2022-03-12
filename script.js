@@ -9,7 +9,7 @@ textAreas.forEach(el=>{
     el.value='';
 })
 function jsonHandler(json) {
-    If(input.files[0]){
+    if(input.files[0]){
        fileName.classList.add('active')
        fileName.textContent = input.files[0].name;
     }
