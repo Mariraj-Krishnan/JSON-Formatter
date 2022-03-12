@@ -1,5 +1,6 @@
 const input = document.querySelector("input");
 input.value = '';
+const fileName = document.querySelector('.file-name');
 const copyButton = document.querySelector('.copy-button');
 const textAreas = document.querySelectorAll('textarea');
 const downloadBtn = document.querySelector('button');
@@ -8,11 +9,13 @@ textAreas.forEach(el=>{
     el.value='';
 })
 function jsonHandler(json) {
+    fileName.classList.add('active')
+    fileName.textContent = input.files[0].name
     textAreas[0].value=json;
     textAreas[1].value=JSON.stringify(JSON.parse(json),null,2);
     const data = JSON.stringify(JSON.parse(json), null, 2);
     downloadBtn.classList.add('active');
-    copyButton.style.display='initial';
+    copyButton.classList.add('active')
     downloadBtn.onclick = function(){
         const element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));

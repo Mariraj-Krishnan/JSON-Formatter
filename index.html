@@ -5,104 +5,148 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON formatter</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
     <script src="script.js" defer></script>
     <style>
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'roboto';
+            font-family: 'roboto',sans-serif;
         }
         body{
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
             align-items: center;
+            gap: 20px;
+        }
+        .container{
+            width: 100%;
+            display: flex;
             justify-content: center;
+            align-items: center;
+            border-bottom: 5px solid hsl(0deg, 0%, 20%);
         }
-        button{
+        .container > *{
+            width: 50%;
+        }
+        .container div textarea{
+            background-color: hsl(0deg, 0%, 20%);
+            color: white;
+            width: 100%;
+        }
+        textarea{
+            border: none;
+            resize: none;
+            padding: 8px;
+            background-color: hsl(0deg, 0%, 95%);
+        }
+        textarea:focus{
+            outline: none;
+        }
+        .copy-button{
+            position: absolute;
+            top: 0;
+            right: 0;
             display: none;
-            padding: 5px;
+            background-color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
         }
-        button.active{
+        .copy-button.active{
             display: initial;
         }
-        form{
-            margin: 30px 0px;
+        .copy-button:active{
+            filter: brightness(0.9);
         }
-        button{
-            padding: 4px 8px;
-            border: none;
-            background-color: dodgerblue;
+        input{
+            visibility: hidden;
+            height: 0;
+            width: 0;
+        }
+        label{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgb(255, 145, 0);
+            padding: 8px 16px;
             color: white;
-            font-size: 16px;
             font-weight: 500;
             border-radius: 4px;
             cursor: pointer;
         }
-        button:active{
-            filter: brightness(1.2);
+        label:active{
+            filter: brightness(1.1);
         }
-        .container{
-            margin-top: 20px;
-            width: 100%;
+        form{
             display: flex;
-            align-items: ceneter;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
         }
-        .container div{
-            width: 40%;
-            min-width: 400px;
-            min-height: 300px;
-            position: relative;
-        }
-        textarea{
-            width: 40%;
-            min-width: 400px;
-            min-height: 300px;
-            resize: none;
-            border: 2px solid hsl(0deg,0%,50%);
-            border-radius: 4px;
-            padding: 10px;
+        .file-name{
+            display: none;
+            margin-top: 8px;
+            text-decoration: underline;
             font-size: 14px;
-            font-weight: 600;
-            font-family: 'cascadia Code','Courier New', Courier, monospace;
+            font-weight: 500;
+            color: hsl(0deg,0%,20%);
         }
-        textarea:focus{
-            outline: none;
-            border-color: dodgerblue;
+        .file-name.active{
+            display: initial;
         }
-        .container div textarea{
-            width: 100%;
-        }
-        .copy-button{
-            position: absolute;
-            background-color: grey;
-            padding: 5px 10px;
-            right: 0px;
-            top: -30px;
+        .download{
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background-color: deepskyblue;
             color: white;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
             border-radius: 4px;
             cursor: pointer;
+            margin-bottom: 20px;
         }
-        .copy-button:active{
-            filter: brightness(1.2);
+        .download:active{
+            filter: brightness(1.1);
+        }
+        .download.active{
+            display: flex;
+        }
+        @media screen and (max-width:800px){
+            .container{
+                flex-direction: column;
+            }
+            .container > *{
+                width: 100%;
+            }
+            textarea{
+                height: 300px;
+            }
+            .copy-button{
+                top: 300px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <textarea id="unformatted" cols="30" rows="10" placeholder="Input JSON"></textarea>
+        <textarea id="unformatted" cols="30" rows="20" placeholder="Input JSON"></textarea>
         <div>
-            <textarea id="unformatted" readonly cols="30" rows="10" placeholder="Formatted JSON"></textarea>
-            <h4 class="copy-button" style="display: none;">copy</h4>
+            <textarea id="unformatted" readonly cols="30" rows="20" placeholder="Formatted JSON"></textarea>
+            <h4 class="copy-button"><span class="material-icons">copy_all</span></h4>
         </div>
     </div>
     <form>
         <input type="file" id="json-input" accept=".json">
+        <label for="json-input">Upload File<span class="material-icons">file_upload</span></label>
+        <p class="file-name"></p>
     </form>
-    <button class="download">Download</button>
+    <button class="download">Download<span class="material-icons">file_download</span></button>
 </body>
 </html>
