@@ -10,12 +10,12 @@ textAreas.forEach(el=>{
 })
 function jsonHandler(json) {
     if(input.files[0]){
-       fileName.classList.add('active')
-       fileName.textContent = input.files[0].name;
+        fileName.classList.add('active');
+        fileName.textContent = input.files[0].name;
     }
     textAreas[0].value=json;
     textAreas[1].value=JSON.stringify(JSON.parse(json),null,2);
-    const data = JSON.stringify(JSON.parse(json), null, 2);
+    const data = JSON.stringify(JSON.parse(json), null, 4);
     downloadBtn.classList.add('active');
     copyButton.classList.add('active')
     downloadBtn.onclick = function(){
